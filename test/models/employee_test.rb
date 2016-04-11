@@ -198,7 +198,7 @@ class EmployeeTest < ActiveSupport::TestCase
       deny Shift.upcoming.for_employee(cindy_id).empty?
       assert @cindy.destroy
       deny Employee.exists?(cindy_id)
-      assert Assignment.current.for_employee(cindy_id).empty?, "CA#{cindy_id}: #{@cindy.destroyable}"
+      assert Assignment.current.for_employee(cindy_id).empty?
       assert Shift.upcoming.for_employee(cindy_id).empty?
       remove_stores
       remove_assignments
