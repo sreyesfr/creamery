@@ -1,0 +1,115 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any styles
+ * defined in the other CSS/SCSS files in this directory. It is generally better to create a new
+ * file per style scope.
+ *
+ *= require_self
+ *= require foundation.min
+ *= require normalize
+ *= require font-awesome.min
+ *= require foundation_and_overrides
+ *= require simple_form
+ */
+
+ .tl_name {
+  width: 225px;
+  display: block;
+  position: absolute;
+}
+
+.tl_date {
+  width: 65px;
+  display: block;
+  position: absolute;
+  margin-left: 250px;
+}
+
+.tl_controls {
+  width:  68px;
+  display: block;
+  margin-left: 330px;
+}
+
+.project_item {
+  background-color: #d1ecfb;
+  width: 400px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: 1px solid blue;
+  margin-top: 5px;
+  margin-bottom: 10px;
+}
+
+.supertiny {
+  font-size:5px;
+  text-decoration:none;
+}
+
+.add_link {
+  font-size:75%;
+  font-style: normal;
+  font-weight: normal;
+}
+
+#title_area {
+  background-color: #ffffff;
+}
+
+#main_content {
+  margin-top: 10px;
+}
+
+#footer {
+  margin-top: 15px;
+  padding-top: 0px;
+  padding-bottom: 15px;
+  background-color:#ffffff;
+  color: #229944;
+  text-align: center;
+}
+
+#footer a {
+  color: #339999;
+  text-decoration: none;
+}
+
+#footer a:hover {
+  color: #339999;
+  text-decoration: underline;
+}
+
+#copy {
+  font-size: 85%;
+}
+
+table {
+  border-collapse:collapse;
+}
+
+table th.centered, table td.centered {
+    text-align: center;
+}
+
+.note {
+  font-style: italic;
+  font-size: 80%;
+}
+li.well {
+  list-style-type: none;
+  margin-left: -10px;
+}
+
+.pagination ul > li > a, .pagination ul > li > span {
+  border-left-width: 1px;
+}
+
+label {
+  padding-right: 4px;
+}

@@ -1,0 +1,30 @@
+<% if @active_stores.empty? %>
+  <p><em>There are no active stores at this time.</em></p>
+<% else %>
+  <h3>Current Stores</h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th width="225">Store Name</th>
+        <th width="225">Store Phone</th>
+        <th width="125">Staff Count</th>
+        <th width="75">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_stores.each do |store| %>
+        <tr>
+          <td><%= link_to store.name, store_path(store) %></td>
+          <td><%= number_to_phone store.phone %></td>
+          <td><%= store.assignments.current.count %></td>      
+          <td>
+            <%= link_to(edit_store_path(store), class: 'button tiny radius warning') do %>
+              &nbsp;Edit&nbsp;
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @active_stores, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %> <p>&nbsp;</p>
+<% end %>
