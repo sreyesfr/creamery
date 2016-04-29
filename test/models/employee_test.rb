@@ -48,7 +48,7 @@ class EmployeeTest < ActiveSupport::TestCase
   should_not allow_value("vp").for(:role)
   should_not allow_value(nil).for(:role)
 
-  #should accept_nested_attributes_for(:user).allow_destroy(true)
+  should accept_nested_attributes_for(:user).allow_destroy(true)
 
   context "Creating a context for employees" do
     # create the objects I want with factories
