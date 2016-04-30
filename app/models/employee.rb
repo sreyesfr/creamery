@@ -58,11 +58,18 @@ class Employee < ActiveRecord::Base
   def age
     (Time.now.to_s(:number).to_i - date_of_birth.to_time.to_s(:number).to_i)/10e9.to_i
   end
+
+  def role?(authorized_role)
+    return false if role.nil?
+    role.to_sym == authorized_role
+  end
   
   # Misc Constants
   ROLES_LIST = [['Employee', 'employee'],['Manager', 'manager'],['Administrator', 'admin']]
   
-  
+  ROLES = [['Administrator', :admin],['Store Manager', :manager],['Employee', :employee]]
+
+
   # Callback code  (NOT DRY!!!)
   # -----------------------------
   private

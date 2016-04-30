@@ -7,14 +7,16 @@
       <p>&nbsp;</p>
       <%= render partial: "#{secondary}" %>
     <% end %>
-    
   </div>
-  <div class="small-3 columns">
-    <!-- Add a button for new instances of object -->
-    <%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
-      <!-- <i class="fa fa-plus"></i> -->
-      &nbsp;Add a New <%= model_name.capitalize %>
-    <% end %>
-  </div>
+  
+  <% if can? :create, "#{model_name}".capitalize %>
+    <div class="small-3 columns">
+      <!-- Add a button for new instances of object -->
+      <%= link_to(eval("new_#{model_name}_path"), class: "button radius") do %>
+        <!-- <i class="fa fa-plus"></i> -->
+        &nbsp;Add a New <%= model_name.capitalize %>
+      <% end %>
+    </div>
+  <% end %>
 </div>
 

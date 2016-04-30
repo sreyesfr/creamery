@@ -1,6 +1,7 @@
 class EmployeesController < ApplicationController
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :check_login
+  authorize_resource
   
   def index
     @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
@@ -23,7 +24,6 @@ class EmployeesController < ApplicationController
 
   def create
     @employee = Employee.new(employee_params)
-    
     if @employee.save
       redirect_to employee_path(@employee), notice: "Successfully created #{@employee.proper_name}."
     else
