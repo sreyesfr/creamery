@@ -7,5 +7,9 @@
   </div>
 </div>
 
+<div class="row">
+  <%= render partial: "upcoming_shifts" unless @shifts.empty?%>
+</div>
+
 <!-- Add buttons to list all, edit project or destroy object -->
 <%= render partial: "partials/object_options", locals: {model_name: "employee", object: @employee}  %>

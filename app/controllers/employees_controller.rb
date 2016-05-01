@@ -1,4 +1,5 @@
 class EmployeesController < ApplicationController
+  require 'will_paginate/array'
   before_action :set_employee, only: [:show, :edit, :update, :destroy]
   before_action :check_login
   authorize_resource
@@ -6,12 +7,14 @@ class EmployeesController < ApplicationController
   def index
     @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
     @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
+    @visible_employees = Assignment.current.by_employee.accessible_by(current_ability).map{|a| a.employee}.paginate(page: params[:page], per_page: 10)
   end
 
   def show
     # get the assignment history for this employee
     @assignments = @employee.assignments.chronological.paginate(page: params[:page]).per_page(5)
-    # get upcoming shifts for this employee (later)  
+    # get upcoming shifts for this employee (later) 
+    @shifts = @employee.shifts.upcoming.chronological.paginate(page: params[:page]).per_page(5)
   end
 
   def new
@@ -42,6 +45,12 @@ class EmployeesController < ApplicationController
   def destroy
     @employee.destroy
     redirect_to employees_path, notice: "Successfully removed #{@employee.proper_name} from the AMC system."
+  end
+
+  def search
+    search = Employee.search params[:term]
+    @employees = search.results
+    render 'index' # or your view
   end
 
   private

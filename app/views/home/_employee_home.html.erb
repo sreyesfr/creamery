@@ -1,0 +1,21 @@
+<div class="row">
+	<% if @shifts.empty? %>
+		You have no upcoming shifts.
+	<% else %>
+		<div class="small-4 columns">
+			<%= render :partial => "employees/upcoming_shifts" %>
+		</div>
+		<% if @next_shift.date == Date.current %>
+			<div class="small-8 columns">
+				<br \><br \><br \>
+				<%= link_to(edit_shift_path(@next_shift, status: 'start_now'), class: "button") do %>
+		            &nbsp;Clock In&nbsp;
+		     <% end %>
+		     <%= link_to(edit_shift_path(@next_shift, status: 'end_now'), class: "button") do %>
+		            &nbsp;Clock Out
+		     <% end %>
+			</div>
+		<% end %>
+	<% end %>
+</div>
+

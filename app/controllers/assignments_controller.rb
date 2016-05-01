@@ -1,5 +1,5 @@
 class AssignmentsController < ApplicationController
-  before_action :set_assignment, only: [:edit, :update, :destroy]
+  before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   before_action :check_login
   # before_action :set_assignment, only: [:show, :edit, :update, :destroy]
   authorize_resource
@@ -7,12 +7,14 @@ class AssignmentsController < ApplicationController
   def index
     @current_assignments = Assignment.current.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(15)
     @past_assignments = Assignment.past.by_employee.by_store.paginate(page: params[:page]).per_page(15)  
+    @visible_current_assignments = @current_assignments.accessible_by(current_ability).paginate(page: params[:page]).per_page(15)
+    @visible_past_assignments = @past_assignments.accessible_by(current_ability).paginate(page: params[:page]).per_page(15)
   end
 
-  # def show
-  #   # get the shift history for this assignment (later; empty now)
-  #   @shifts = Array.new
-  # end
+  def show
+    # get the shift history for this assignment (later; empty now)
+    @shifts = @assignment.shifts.past.chronological.paginate(page: params[:page]).per_page(5)
+  end
 
   def new
     @assignment = Assignment.new

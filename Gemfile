@@ -31,13 +31,14 @@ gem 'time_date_helpers'
 gem 'validates_timeliness'
 gem 'cancancan'
 gem 'simple_form'
-gem 'will_paginate'
+gem 'will_paginate', '~> 3.1.0'
 gem 'foundation-rails', '5.5.3.2'
 gem 'font-awesome-sass-rails', '3.0.2.2'
 gem 'geocoder', '1.3.2'
 gem 'jquery-ui-rails'
 gem 'nested_form'
-
+gem 'sunspot_rails'
+gem 'sunspot_solr'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
