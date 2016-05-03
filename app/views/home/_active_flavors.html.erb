@@ -1,0 +1,37 @@
+<% if @active_flavors.empty? %>
+  <p><em>There are no current flavors at this time.</em></p>
+<% else %>
+  <h3>Flavors at  <%= current_user.employee.current_assignment.store.name %></h3>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <% if !current_user.employee.nil? and current_user.employee.role? :manager %>
+          <th>&nbsp;</th>
+        <% end %>
+      </tr>
+    </thead>
+    <tbody>
+      <% @active_flavors.each do |f| %>   
+        <tr>
+          <td><%= f.name %></td>
+          <% if !current_user.employee.nil? and current_user.employee.role? :manager %>
+            <% if !StoreFlavor.for_store(current_user.employee.current_assignment.store).map{|s| s.flavor.name}.include? f.name %>
+              <td>
+                <br \>
+                <%= button_to "Add Flavor", {:controller => :store_flavors, :action => 'create', :store_flavor => {:store_id => current_user.employee.current_assignment.store_id, :flavor_id => f.id}}, :method => :post, class: "button tiny radius" %>
+              </td>
+            <% else %>
+              <td>
+                <br \>
+                <% store_flavor_id = StoreFlavor.all.for_store(current_user.employee.current_assignment.store).for_flavor(f).first.id %>
+                <%= button_to "Remove Flavor", {:controller => :store_flavors, :action => 'destroy', :id =>  store_flavor_id}, :method => :delete, class: "button tiny radius" %>
+              </td>
+            <% end %>
+          <% end %>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @active_flavors, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<% end %>
