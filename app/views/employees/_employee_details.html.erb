@@ -1,27 +1,35 @@
-<h4><b>Employee Details</b></h4>
-<p>
-  <b>Name:</b> <%= @employee.name %>  
-</p>
+<div id="employee_details">
+	<h4><b>Employee Details</b></h4>
+	<p>
+	  <b>Name:</b> <%= @employee.name %>  
+	</p>
 
-<p>
-  <b>SSN:</b> <%= @employee.ssn %>
-</p>
+	<p>
+	  <b>SSN:</b> <%= @employee.ssn %>
+	</p>
 
-<p>
-  <b>Date of Birth:</b> <%= @employee.date_of_birth.strftime("%m/%d/%y") %>
-</p>
+	<p>
+	  <b>Date of Birth:</b> <%= @employee.date_of_birth.strftime("%m/%d/%y") %>
+	</p>
 
-<p>
-  <b>Phone:</b> <%= number_to_phone @employee.phone unless @employee.phone.nil? %>
-</p>
+	<p>
+	  <b>Phone:</b> <%= number_to_phone @employee.phone unless @employee.phone.nil? %>
+	</p>
 
-<p>
-  <b>Role:</b> <%= @employee.role.capitalize %>
-</p>
+	<p>
+	  <b>Role:</b> <%= @employee.role.capitalize %>
+	</p>
 
-<% if current_user.employee.role? :admin %>
-<p>
-  <b>Active:</b> <%= @employee.active ? "Yes" : "No" %>
-</p>
-<% end %>
+	<% if current_user.employee.role? :admin %>
+	<p>
+	  <b>Active:</b> <%= @employee.active ? "Yes" : "No" %>
+	</p>
+	<% end %>
+	<%= render 'list_of_shifts' %>
+	<% if !current_user.employee.role? :employee %>
+	  <%= link_to(new_shift_path(assignment_id: @employee.current_assignment.id), id: 'new_shift_link', class: 'button tiny radius', remote: true) do %>
+	  Add New Shift
+		<% end %>
+	<% end %>
+</div>
 

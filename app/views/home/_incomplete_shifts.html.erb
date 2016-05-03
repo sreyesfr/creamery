@@ -16,9 +16,9 @@
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
         <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
         <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
-        <td><%= link_to "Add Jobs", edit_shift_path(shift) %></td>
+        <td><%= link_to "Add Jobs", edit_shift_path(shift, type: "add_job") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @incomplete_shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= will_paginate @incomplete_shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "incomplete_shifts" %>

@@ -33,7 +33,7 @@ class ShiftsController < ApplicationController
   def create
     @shift = Shift.new(shift_params)
     if @shift.save
-      redirect_to shift_path(@shift), notice: "Successfully created shift."
+      redirect_to home_path, notice: "Successfully created shift."
     else
       render action: 'new'
     end
@@ -49,7 +49,7 @@ class ShiftsController < ApplicationController
 
   def destroy
     @shift.destroy
-    redirect_to shifts_path, notice: "Successfully removed shift."
+    redirect_to home_path, notice: "Successfully removed shift."
   end
 
   private
@@ -58,7 +58,7 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params.require(:shift).permit(:date, :start_time, :end_time, :assignment_id, shift_jobs_attributes: [:shift_id, :job_id, :_destroy])
+    params.require(:shift).permit(:date, :start_time, :end_time, :notes, :assignment_id, shift_jobs_attributes: [:shift_id, :job_id, :_destroy])
   end
 
 end

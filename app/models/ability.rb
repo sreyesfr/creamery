@@ -43,6 +43,9 @@ class Ability
         # Managers can also create shiftjobs
           can :create, ShiftJob
           can :update, ShiftJob
+        # and create shifts
+          can :create, Shift
+          can :update, Shift
       elsif user.employee.role? :employee
         # Employees
         # (1)

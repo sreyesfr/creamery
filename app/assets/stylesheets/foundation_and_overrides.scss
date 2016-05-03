@@ -160,7 +160,7 @@
 // We use these to style anchors
 // $anchor-text-decoration: none;
 // $anchor-font-color: $primary-color;
-// $anchor-font-color-hover: scale-color($primary-color, $lightness: -14%);
+ $anchor-font-color-hover: #A062BD;
 
 // We use these to style the <hr> element
 // $hr-border-width: 1px;
@@ -1339,5 +1339,29 @@ select.time { width: 90px; }
 label {
   padding-right: 4px;
 }
+
+.min_shift_job {
+      background-color: white;
+      padding: 2px 2px 2px 5px;
+      border: 1px solid #5e0231;
+      margin-top: 5px;
+      margin-bottom: 10px;
+      border-radius: 10px;
+      select { width: 180px; }
+      input { width: 182px; }
+  }
+
+  /* Cutting back the spacing on simple_form... */
+  .form-horizontal .min_shift_job .control-label {
+      float: left;
+      padding-top: 3px;
+      text-align: right;
+      width: 60px;
+      font-size: 90%;
+  }
+  .form-horizontal .min_shift_job .controls {
+      margin-left: 70px;
+      width: 240px;
+  }
 
 @import 'foundation';

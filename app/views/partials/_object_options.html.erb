@@ -12,8 +12,10 @@
       <% end %>
       &nbsp;&nbsp;
       
-      <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'button alert') do %>
-          &nbsp;<%= "Delete #{opt}" %>
+      <% if model_name != "store" %>
+        <%= link_to(eval("#{model_name}_path(object)"), method: 'delete', data: {confirm: "Are you sure you want to permanently delete #{opt}"}, class: 'button alert') do %>
+            &nbsp;<%= "Delete #{opt}" %>
+        <% end %>
       <% end %>
     <% end %>
   </div>

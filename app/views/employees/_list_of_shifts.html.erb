@@ -1,0 +1,11 @@
+<div id="shift_list">
+	<% unless @shifts.empty? %>
+    <p><b>Shifts for <%= @employee.name %>:</b>
+      <ol>
+        <% for shift in @shifts %>
+          <li><%= shift.date %> at <%= shift.start_time %></li>
+        <% end %>
+      </ol>
+    </p>
+  <% end %>
+</div>

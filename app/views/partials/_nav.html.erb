@@ -58,6 +58,10 @@
           <li><%= link_to "Contact Us", contact_path %><li>
         <% end %>
 
+        <% if !current_user.nil? and !current_user.employee.role? :employee %>
+          <li><%= link_to "Create Shift", new_shift_path(type: "create_edit") %><li>
+        <% end %>
+
 
       </ul>
       <ul class="right">
