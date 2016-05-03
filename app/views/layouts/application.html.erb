@@ -21,6 +21,12 @@
           yearRange: '-100:+0'
         });
       });
+      // Flash fade
+      $(function() {
+         $('.alert-box').fadeIn('normal', function() {
+            $(this).delay(2000).fadeOut();
+         });
+      });
     </script>
   </head>
 

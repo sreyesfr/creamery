@@ -1,15 +1,18 @@
+<br \>
 <div class="row">
-  <div class="small-7 columns">
+  <div class="small-6 columns">
     <%= render partial: "employee_details" %>
   </div>
 
-  <div class="small-5 columns">
+  <div class="small-6 columns">
     <%= render partial: "assignment_history" unless @assignments.empty?%>
   </div>
 </div>
 
 <div class="row">
-  <%= render partial: "shift_history" unless @past_shifts.empty?%>
+  <div class="small-6 columns">
+    <%= render partial: "shift_history" unless @past_shifts.empty?%>
+  </div>
 </div>
 
 <% if current_user.employee.role? :admin %>
