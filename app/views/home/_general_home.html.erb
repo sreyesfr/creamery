@@ -1,24 +1,40 @@
-<h2>Welcome To A &amp; M Creamery</h2>
-<br />
 <div class="row">
-	<div class="small-7 columns">
-		<p>
-			A &amp; M Creamery is one of the smallest, but absolutely best, chain of 
-			ice cream shops we know in the Greater Pittsburgh area.
-			You should come to one of our stores and buy lots of our ice cream now.  
-			Our ice cream is delicious, nutritious and amazing in every way.  
-			Why are you still reading this?  You should be down here buying ice 
-			cream right now.  Stop reading and get your backside moving to an 
-			A &amp; M Creamery store now.  
-			(Still reading? What are you waiting for?)
-		</p>
-	</div>
-	<div class="small-1 columns">
-		&nbsp;
-	</div>
-	<div class="small-4 columns">
-		&nbsp;
+	<div class="large-12 columns">
+		<p><%= image_tag 'banner.png', class: "center" %></p>
 	</div>
 </div>
-
-
+ 
+<div class="row">
+	<div class="large-8 columns">
+		<h4>Welcome!</h4>
+		<p>Named the top ice cream and frozen dessert franchise in the United States, A&M is the world’s most delicious chain of ice cream specialty shops. A&M creates and markets innovative, premium ice cream, providing quality and value to consumers multiple shops in Pennsylvania, Ohio, and West Virginia.</p>
+		<p><%= link_to 'Learn More', about_path, :class => 'secondary small button' %></p>
+	</div>
+	<div class="large-4 columns">
+		<ul class="small-block-grid-3">
+			<li><%= image_tag 'ice_cream1.jpg', class: "center" %></li>
+			<li><%= image_tag 'ice_cream2.jpg', class: "center" %></li>
+			<li><%= image_tag 'ice_cream3.jpg', class: "center" %></li>
+			<li><%= image_tag 'ice_cream4.jpg', class: "center" %></li>
+			<li><%= image_tag 'ice_cream5.jpg', class: "center" %></li>
+			<li><%= image_tag 'ice_cream6.jpg', class: "center" %></li>
+		</ul>
+	</div>
+</div>
+ 
+<div class="row">
+	<div class="large-12 columns">
+		<div class="panel">
+			<h4>Get in touch!</h4>
+			<div class="row">
+				<div class="large-9 columns">
+					<p>We'd love to hear your questions and comments.</p>
+				</div>
+				<div class="large-3 columns">
+					<%= link_to 'Contact Us', contact_path, :class => 'radius button right' %>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+ 

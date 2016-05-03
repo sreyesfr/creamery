@@ -22,6 +22,9 @@
 </p>
 <% end %>
 <br \><br \>
-<%= link_to stores_path, class: 'button' do %>
-      &nbsp;Back to All Stores
+
+<% if current_user.nil? or !current_user.employee.role? :admin %>
+	<%= link_to stores_path, class: 'button' do %>
+	      &nbsp;Back to All Stores
+	<% end %>
 <% end %>

@@ -25,9 +25,7 @@
           <% end %>    
           <% if can? :update, store %>
             <td>
-              <%= link_to(edit_store_path(store), class: 'button tiny radius warning') do %>
-                &nbsp;Edit&nbsp;
-              <% end %>
+              <%= link_to "Edit", edit_store_path(store) %>
             </td>
           <% end %>
         </tr>

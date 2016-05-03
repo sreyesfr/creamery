@@ -36,9 +36,9 @@
 // $total-columns: 12;
 
 // We use these to control various global styles
-// $body-bg: #fff;
-// $body-font-color: #222;
-// $body-font-family: "Helvetica Neue", "Helvetica", Helvetica, Arial, sans-serif;
+ $body-bg: #dbc3d0;
+ $body-font-color: #fff;
+ $body-font-family: Verdana, Geneva, sans-serif;
 // $body-font-weight: normal;
 // $body-font-style: normal;
 
@@ -51,12 +51,12 @@
 // $default-float: left;
 
 // We use these as default colors throughout
-// $primary-color: #008CBA;
-// $secondary-color: #e7e7e7;
-// $alert-color: #f04124;
-// $success-color: #43AC6A;
-// $warning-color: #f08a24;
-// $info-color: #a0d3e8;
+ $primary-color: #5e0231;
+ $secondary-color: #5e0231;
+ $alert-color: #5e0231;
+ $success-color: #c7a693;
+ $warning-color: #5e0231;
+ $info-color: #5e0231;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;
@@ -113,10 +113,10 @@
 // $include-html-type-classes: $include-html-classes;
 
 // We use these to control header font styles
-// $header-font-family: $body-font-family;
+ $header-font-family: $body-font-family;
 // $header-font-weight: 300;
 // $header-font-style: normal;
-// $header-font-color: #222;
+ $header-font-color: #5e0231;
 // $header-line-height: 1.4;
 // $header-top-margin: .2rem;
 // $header-bottom-margin: .5rem;
@@ -322,7 +322,7 @@
 // $button-margin-bottom: rem-calc(20);
 
 // We use these to control button text styles.
-// $button-font-family: $body-font-family;
+ $button-font-family: $body-font-family;
 // $button-font-color: #fff;
 // $button-font-color-alt: #333;
 // $button-font-tny: rem-calc(11);
@@ -479,7 +479,7 @@
 // $form-label-font-size: rem-calc(14);
 // $form-label-font-weight: normal;
 // $form-label-line-height: 1.5;
-// $form-label-font-color: scale-color(#000, $lightness: 30%);
+ $form-label-font-color: #5e0231;
 // $form-label-bottom-margin: 0;
 // $input-font-family: inherit;
 // $input-font-color: rgba(0,0,0,0.75);
@@ -743,6 +743,7 @@
 // We use these for the pagination anchor links
 // $pagination-link-pad: rem-calc(1 10 1);
 // $pagination-link-font-color: #999;
+
 // $pagination-link-active-bg: scale-color(#fff, $lightness: -10%);
 
 // We use these for disabled anchor links
@@ -762,9 +763,9 @@
 // $include-html-panel-classes: $include-html-classes;
 
 // We use these to control the background and border styles
-$panel-bg: scale-color(#E1F7E7, $lightness: -5%);
+$panel-bg: scale-color(#c7a693, $lightness: 10%);
 // $panel-border-style: solid;
-// $panel-border-size: 1px;
+$panel-border-size: 1px;
 
 // We use this % to control how much we darken things on hover
 // $panel-function-factor: -11%;
@@ -775,7 +776,7 @@ $panel-bg: scale-color(#E1F7E7, $lightness: -5%);
 // $panel-padding: rem-calc(20);
 
 // We use these to set default font colors
-// $panel-font-color: #333;
+ $panel-font-color: #fff;
 // $panel-font-color-alt: #fff;
 
 // $panel-header-adjust: true;
@@ -1028,11 +1029,11 @@ $panel-bg: scale-color(#E1F7E7, $lightness: -5%);
 // $include-html-table-classes: $include-html-classes;
 
 // These control the background color for the table and even rows
-// $table-bg: #fff;
-// $table-even-row-bg: #f9f9f9  ;
+ $table-bg: scale-color(#c7a693, $lightness: 40%);
+// $table-even-row-bg: #dbc3d0  ;
 
 // These control the table cell border style
-// $table-border-style: solid;
+ $table-border-style: none;
 // $table-border-size: 1px;
 // $table-border-color: #ddd;
 
@@ -1123,8 +1124,8 @@ $panel-bg: scale-color(#E1F7E7, $lightness: -5%);
 // $include-html-top-bar-classes: $include-html-classes;
 
 // Background color for the top bar
-$topbar-bg-color: #339966;
-$topbar-bg: $topbar-bg-color;
+ $topbar-bg-color: #5e0231;
+// $topbar-bg: $topbar-bg-color;
 
 // Height and margin
 // $topbar-height: 45px;
@@ -1136,22 +1137,23 @@ $topbar-bg: $topbar-bg-color;
 
 // Style the top bar dropdown elements
 // $topbar-dropdown-bg: #333;
-// $topbar-dropdown-link-color: #fff;
-// $topbar-dropdown-link-bg: #333;
+// $topbar-dropdown-link-color: #000000;
+ $topbar-dropdown-link-bg: #c7a693;
+ $topbar-dropdown-link-bg-hover: #856046 ;
 // $topbar-dropdown-link-weight: normal;
 // $topbar-dropdown-toggle-size: 5px;
 // $topbar-dropdown-toggle-color: #fff;
 // $topbar-dropdown-toggle-alpha: 0.4;
 
 // Set the link colors and styles for top-level nav
-// $topbar-link-color: #fff;
+// $topbar-link-color: #000000;
 // $topbar-link-color-hover: #fff;
 // $topbar-link-color-active: #fff;
 // $topbar-link-color-active-hover: #fff;
 // $topbar-link-weight: normal;
 // $topbar-link-font-size: rem-calc(13);
 // $topbar-link-hover-lightness: -10%; // Darken by 10%
-// $topbar-link-bg-hover: #272727  ;
+ $topbar-link-bg-hover: #856046 ;
 // $topbar-link-bg-active: $primary-color;
 // $topbar-link-bg-active-hover: scale-color($primary-color, $lightness: -14%);
 // $topbar-link-font-family: $body-font-family;
@@ -1163,6 +1165,7 @@ $topbar-bg: $topbar-bg-color;
 // $topbar-dropdown-label-font-weight: bold;
 // $topbar-dropdown-label-font-size: rem-calc(10);
 // $topbar-dropdown-label-bg: #333;
+
 
 // Top menu icon styles
 // $topbar-menu-link-transform: uppercase;
@@ -1238,25 +1241,25 @@ $topbar-bg: $topbar-bg-color;
 }
 
 #main_content {
-  margin-top: 0px;
+  margin-top: 10px;
 }
 
 #footer {
   margin-top: 15px;
   padding-top: 0px;
   padding-bottom: 15px;
-  background-color:#ffffff;
-  color: #229944;
-  text-align: center;
+  background-color:#dbc3d0;
+  color: #000000;
+  text-align: left;
 }
 
 #footer a {
-  color: #339999;
+  color: #5e0231;
   text-decoration: none;
 }
 
 #footer a:hover {
-  color: #339999;
+  color: #5e0231;
   text-decoration: underline;
 }
 
@@ -1319,7 +1322,7 @@ select.date { width: 90px; }
 select.time { width: 90px; }
 
 .form-actions {
-  background-color: #FFF;
+  background-color: #dbc3d0;
 }
 
 .form-actions-min {
@@ -1336,6 +1339,5 @@ select.time { width: 90px; }
 label {
   padding-right: 4px;
 }
-
 
 @import 'foundation';

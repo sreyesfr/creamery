@@ -1,15 +1,16 @@
-
-<footer>
-
-	<%= link_to 'Home', home_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
-  <%= link_to 'About the Creamery', about_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
-	<%= link_to 'Contact Us', contact_path %>&nbsp;&nbsp;::&nbsp;&nbsp;
-	<%= link_to 'Privacy Policy', privacy_path %>
-	<br /><br />
-	
-	<div id="copy">
-		Webmaster: <%= mail_to("sreyesfr@andrew.cmu.edu", "Sarah Reyes-Franco", encode: "javascript") %> 
-		&nbsp;&nbsp;&copy 2016
-	</div>
-
-</footer>
+<div class="large-12 columns">
+  <hr/>
+  <div class="row">
+    <div class="large-6 columns">
+      <p>Webmaster - <%= mail_to "sreyesfr@andrew.cmu.edu", "Sarah Reyes-Franco", :encode => "javascript" %> &copy; 2016.</p>
+    </div>
+    <div class="large-6 columns">
+      <ul class="inline-list right">
+        <li><%= link_to 'Home', home_path %></li>
+        <li><%= link_to 'About Us', about_path %></li>
+        <li><%= link_to 'Contact Us', contact_path %></li>
+        <li><%= link_to 'Privacy', privacy_path %></li>
+      </ul>
+    </div>
+  </div>
+</div>
