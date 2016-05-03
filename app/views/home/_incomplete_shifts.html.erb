@@ -16,10 +16,7 @@
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
         <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
         <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
-        <td><br \><%= link_to(edit_shift_path(shift), id: "edit_shift_link", class: 'button tiny radius', remote: false) do %>
-              Add Jobs
-            <% end %>
-        </td>
+        <td><%= link_to "Add Jobs", edit_shift_path(shift) %></td>
       </tr>
     <% end %>
   </tbody>

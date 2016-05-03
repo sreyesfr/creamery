@@ -18,14 +18,12 @@
           <% if !current_user.employee.nil? and current_user.employee.role? :manager %>
             <% if !StoreFlavor.for_store(current_user.employee.current_assignment.store).map{|s| s.flavor.name}.include? f.name %>
               <td>
-                <br \>
-                <%= button_to "Add Flavor", {:controller => :store_flavors, :action => 'create', :store_flavor => {:store_id => current_user.employee.current_assignment.store_id, :flavor_id => f.id}}, :method => :post, class: "button tiny radius" %>
+                <%= link_to "Add Flavor", {:controller => :store_flavors, :action => 'create', :store_flavor => {:store_id => current_user.employee.current_assignment.store_id, :flavor_id => f.id}}, :method => :post %>
               </td>
             <% else %>
               <td>
-                <br \>
                 <% store_flavor_id = StoreFlavor.all.for_store(current_user.employee.current_assignment.store).for_flavor(f).first.id %>
-                <%= button_to "Remove Flavor", {:controller => :store_flavors, :action => 'destroy', :id =>  store_flavor_id}, :method => :delete, class: "button tiny radius" %>
+                <%= link_to "Remove Flavor", {:controller => :store_flavors, :action => 'destroy', :id =>  store_flavor_id}, :method => :delete %>
               </td>
             <% end %>
           <% end %>
