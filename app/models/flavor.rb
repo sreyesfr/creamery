@@ -7,6 +7,7 @@ class Flavor < ActiveRecord::Base
   scope :active,       -> { where(active: true) }
   scope :inactive,     -> { where(active: false) }
   scope :alphabetical, -> { order(:name) }
+  scope :for_store,    ->(store_id) { join(:store_flavor).where("store_flavors.store_id = ?", store_id) }
 
   # Validations
   validates_presence_of :name
