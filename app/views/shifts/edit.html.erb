@@ -1,0 +1,20 @@
+<%= simple_nested_form_for @shift, :html => { :class => 'form-horizontal' } do |shift_form| %>
+  <div class="row">
+    <div class="span7">
+        <div class="span5">
+          <div id="shift_jobs">
+            <%= shift_form.simple_fields_for :shift_jobs do |shift_job_form| %>
+            	<%# shift_job_form.input :shift_id, as: :hidden, input_html: {value: @shift} %>
+              <%= shift_job_form.link_to_remove("x") %>
+              <%= shift_job_form.input :job_id, :collection => Job.active.alphabetical, :include_blank => true, input_html: {class: "avg"} %>
+            <% end %> 
+            <br \><%= shift_form.link_to_add("Add Job", :shift_jobs, :class => 'button tiny') %>
+          </div> 
+        </div>
+        <div class="form-actions">
+          <%= shift_form.submit nil, :class => 'button' %>
+          <%= link_to 'Cancel', home_path, :class => 'button secondary' %>
+        </div>
+    </div>
+  </div>
+<% end %>

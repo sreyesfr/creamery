@@ -15,7 +15,7 @@ class ShiftsController < ApplicationController
     @shift = Shift.new
   end
 
-  def edit
+  def edit     
     @next_shift = Shift.for_employee(current_user.employee).upcoming.first
     # Handle shortcut deactivations
       unless params[:status].nil?
@@ -32,7 +32,6 @@ class ShiftsController < ApplicationController
 
   def create
     @shift = Shift.new(shift_params)
-    
     if @shift.save
       redirect_to shift_path(@shift), notice: "Successfully created shift."
     else
@@ -42,7 +41,7 @@ class ShiftsController < ApplicationController
 
   def update
     if @shift.update(shift_params)
-      redirect_to shift_path(@shift), notice: "Successfully updated shift."
+      redirect_to home_path, notice: "Successfully updated shift."
     else
       render action: 'edit'
     end
@@ -59,7 +58,7 @@ class ShiftsController < ApplicationController
   end
 
   def shift_params
-    params.require(:shift).permit(:date, :start_time, :end_time, :assignment_id)
+    params.require(:shift).permit(:date, :start_time, :end_time, :assignment_id, shift_jobs_attributes: [:shift_id, :job_id, :_destroy])
   end
 
 end

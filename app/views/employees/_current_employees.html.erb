@@ -1,4 +1,4 @@
-<% if @visible_employees.empty? %>
+<% if @employees.empty? %>
   <p><em>You have no current employees at this time.</em></p>
 <% else %>
   <h3>Current Employees</h3>
@@ -9,19 +9,19 @@
         <th>Phone</th>
         <th>Currently Assigned</th>
         <th>Role</th>
-        <% if can? :update, Employee %>
+        <% if can? :update, Employee and !current_user.employee.role? :manager %>
           <th>&nbsp;</th>
         <% end %>
       </tr>
     </thead>
     <tbody>
-      <% @visible_employees.each do |employee| %>
+      <% @employees.each do |employee| %>   
         <tr>
           <td><%= link_to employee.name, employee_path(employee) %></td>
           <td><%= number_to_phone employee.phone unless employee.phone.nil?  %></td>
           <td><%= link_to employee.current_assignment.store.name, store_path(employee.current_assignment.store) unless employee.current_assignment.nil? %></td>
           <td><%= employee.role.capitalize %></td>
-          <% if can? :update, employee %>
+          <% if can? :update, employee and !current_user.employee.role? :manager %>
             <td>
               <%= link_to "Edit", edit_employee_path(employee) %>
               <%# link_to(edit_employee_path(employee), class: 'button tiny radius warning') do %>
@@ -33,5 +33,5 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate @visible_employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+  <%= will_paginate @employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
 <% end %>

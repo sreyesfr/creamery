@@ -10,21 +10,21 @@
   <tbody>
     <% @assignments.each do |assignment| %>
       <tr>
-        <td><%= link_to assignment.store.name, store_path(assignment.store) %></td>
-        <td>
-          <%= assignment.start_date.strftime("%m/%d/%y") %>
-          <% if assignment.end_date.nil? %>
-            &nbsp;&nbsp;&nbsp;
-            <%= link_to(edit_assignment_path(assignment), class: 'button tiny radius warning') do %>
-              &nbsp;End&nbsp;
-            <% end %>
-          <% else %>
-            &nbsp;-&nbsp;<%= assignment.end_date.strftime("%m/%d/%y") %>
-          <% end %>
-        </td>
+        <td><%= link_to assignment.store.name, store_path(assignment.store) %></td> 
+          <td>
+            <%= assignment.start_date.strftime("%m/%d/%y") %>
+            <% if assignment.end_date.nil? %>
+              &nbsp;&nbsp;&nbsp;
+              <% if current_user.employee.role? :admin %>
+                <%= link_to "End", edit_assignment_path(assignment) %>
+              <% end %>
+            <% else %>
+              &nbsp;-&nbsp;<%= assignment.end_date.strftime("%m/%d/%y") %>
+          </td>
+        <% end %>
         <td class="centered"><%= assignment.pay_level %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @assignments, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= will_paginate @assignments, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "assignment" %>

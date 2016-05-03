@@ -1,10 +1,38 @@
 <div class="row">
-  <div class="small-7 columns">
+  <div class="small-6 columns">
     <%= render partial: "store_details" %>
   </div>
-  <div class="small-5 columns">
-    <%= render partial: "assigned_employees" unless @current_assignments.empty?%>
+  
+  <div class="small-6 columns">
+  	<script src='https://maps.googleapis.com/maps/api/js?v=3.exp'></script>
+  	<div style='overflow:hidden;height:400px;width:500px;'>
+  		<div id='gmap_canvas' style='height:400px;width:500px;'>
+  		</div>
+  		<div>
+  			<small><a href="http://embedgooglemaps.com">embed google maps</a></small>
+  		</div>
+  		<style>#gmap_canvas img{max-width:none!important;background:none!important}</style>
+  	</div>
+  	<script type='text/javascript'>
+  		function init_map(){
+  			var myOptions = {
+  				zoom:10,
+  				center:new google.maps.LatLng(<%= @store.latitude %>, <%= @store.longitude %>),
+  				mapTypeId: google.maps.MapTypeId.ROADMAP}; 
+  			map = new google.maps.Map(document.getElementById('gmap_canvas'), myOptions);
+  			marker = new google.maps.Marker({
+  				map: map,
+  				position: new google.maps.LatLng(<%= @store.latitude %>, <%= @store.longitude %>)});
+  			infowindow = new google.maps.InfoWindow({
+  				content:'<strong><%= @store.name %></strong><br><%= @store.street %> <br> <%= @store.city %> <%= @store.state %> <%= @store.zip %> <br>'});
+  			google.maps.event.addListener(marker, 'click', function(){infowindow.open(map,marker);});
+  			infowindow.open(map,marker);}
+  		google.maps.event.addDomListener(window, 'load', init_map);
+  	</script>
   </div>
+  <% if !current_user.nil? and current_user.employee.role? :admin %>
+    <%= render partial: "assigned_employees" unless @current_assignments.empty?%>
+  <% end %>
 </div>
 
 <!-- Add buttons to list all, edit project or destroy object -->

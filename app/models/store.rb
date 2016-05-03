@@ -42,6 +42,16 @@ class Store < ActiveRecord::Base
     end
     coord
   end
+
+  def create_map_link(zoom=13,width=400,height=350)
+    # markers = ""; i = 1
+    # self.attractions.alphabetical.to_a.each do |attr|
+    #   markers += "&markers=color:red%7Ccolor:red%7Clabel:#{i}%7C#{attr.latitude},#{attr.longitude}"
+    #   i += 1
+    # end
+    markers = "&markers=color:red%7Ccolor:red%7Clabel:%7C#{self.latitude},#{self.longitude}"
+    map = "http://maps.google.com/maps/api/staticmap?center= #{self.latitude},#{self.longitude}&zoom=#{zoom}&size=#{width}x#{height}&maptype=roadmap#{markers}&sensor=false"
+  end
   
   # Callback code
   # -----------------------------

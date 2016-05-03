@@ -1,0 +1,27 @@
+<h3>Incomplete Shifts</h3>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Employee</th>
+      <th>Date</th>
+      <th>Start Time</th>
+      <th>End Time</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @incomplete_shifts.each do |shift| %>
+      <tr>
+        <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+        <td><%= shift.date.strftime("%m/%d/%y") %></td>
+        <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
+        <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
+        <td><br \><%= link_to(edit_shift_path(shift), id: "edit_shift_link", class: 'button tiny radius', remote: false) do %>
+              Add Jobs
+            <% end %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @incomplete_shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>

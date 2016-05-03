@@ -7,7 +7,9 @@
       <tr>
         <th width="225">Store Name</th>
         <th width="225">Store Phone</th>
-        <th width="125">Staff Count</th>
+        <% if !current_user.nil? and current_user.employee.role? :admin %>
+          <th width="125">Staff Count</th>
+        <% end %>
         <% if can? :update, Store %>
           <th width="75">&nbsp;</th>
         <% end %>
@@ -18,7 +20,9 @@
         <tr>
           <td><%= link_to store.name, store_path(store) %></td>
           <td><%= number_to_phone store.phone %></td>
-          <td><%= store.assignments.current.count %></td>      
+          <% if !current_user.nil? and current_user.employee.role? :admin %>
+            <td><%= store.assignments.current.count %></td>  
+          <% end %>    
           <% if can? :update, store %>
             <td>
               <%= link_to(edit_store_path(store), class: 'button tiny radius warning') do %>

@@ -7,8 +7,8 @@ class AssignmentsController < ApplicationController
   def index
     @current_assignments = Assignment.current.by_store.by_employee.chronological.paginate(page: params[:page]).per_page(15)
     @past_assignments = Assignment.past.by_employee.by_store.paginate(page: params[:page]).per_page(15)  
-    @visible_current_assignments = @current_assignments.accessible_by(current_ability).paginate(page: params[:page]).per_page(15)
-    @visible_past_assignments = @past_assignments.accessible_by(current_ability).paginate(page: params[:page]).per_page(15)
+    @visible_current_assignments = @current_assignments.accessible_by(current_ability).paginate(page: params[:current]).per_page(15)
+    @visible_past_assignments = @past_assignments.accessible_by(current_ability).paginate(page: params[:past]).per_page(15)
   end
 
   def show

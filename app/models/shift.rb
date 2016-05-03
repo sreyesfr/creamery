@@ -6,10 +6,12 @@ class Shift < ActiveRecord::Base
   has_one :employee, through: :assignment
   has_one :store, through: :assignment
 
+  accepts_nested_attributes_for :shift_jobs, reject_if: lambda { |shift_job| shift_job[:job_id].blank? }, allow_destroy: true
+
   # Validations
   validates_date :date, on_or_after: lambda { :assignment_starts }, on_or_before_message: "must be on or after the start of the assignment"
   validates_time :start_time
-  validates_time :end_time, after: :start_time, allow_blank: true
+  #validates_time :end_time, after: :start_time, allow_blank: true
   validate :assignment_must_be_current
 
   # Scopes

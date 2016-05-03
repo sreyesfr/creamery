@@ -1,0 +1,9 @@
+<form action="">
+	<% Flavor.active.each do |flavor|%>
+		<% if StoreFlavor.for_store(current_user.employee.current_assignment.store).map{|s| s.flavor.name}.include? flavor.name then %>
+			<input type="checkbox" checked><%= flavor.name %><br>
+		<% else %>
+			<input type="checkbox"><%= flavor.name %><br>
+		<% end %>
+	<% end %>
+</form>

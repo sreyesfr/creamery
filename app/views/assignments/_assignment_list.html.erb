@@ -42,6 +42,6 @@
       <% end %>
     </tbody>
   </table>
-  <%= will_paginate assignments, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next" %>  
+  <%= will_paginate assignments, previous_label: "Previous&nbsp;", next_label: "&nbsp;Next", :param_name => state %>  
 <% end %>
 <p>&nbsp;</p>

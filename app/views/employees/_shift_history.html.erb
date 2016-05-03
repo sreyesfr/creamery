@@ -1,20 +1,22 @@
-<h3>Upcoming Shifts</h3>
+<h3>Past Shifts</h3>
 <table class="table table-striped">
   <thead>
     <tr>
       <th>Date</th>
       <th>Start Time</th>
       <th>End Time</th>
+      <th>Jobs</th>
     </tr>
   </thead>
   <tbody>
-    <% @shifts.each do |shift| %>
+    <% @past_shifts.each do |shift| %>
       <tr>
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
         <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
         <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
+        <td><%= shift.jobs.sort.map{|j| j.name}.join(", ") %></td>
       </tr>
     <% end %>
   </tbody>
 </table>
-<%= will_paginate @shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<%= will_paginate @past_shifts, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next", :param_name => "past_shifts" %>
