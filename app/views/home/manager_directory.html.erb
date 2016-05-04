@@ -1,0 +1,26 @@
+<% if @managers.empty? %>
+  <p><em>You have no current managers at this time.</em></p>
+<% else %>
+  <h4><b>Current Managers</b></h4>
+  <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Currently Assigned</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @managers.each do |manager| %>   
+        <tr>
+          <td><%= link_to manager.name, employee_path(manager) %></td>
+          <td><%= number_to_phone manager.phone unless manager.phone.nil?  %></td>
+          <td><%= manager.user.email unless manager.user.nil? %></td>
+          <td><%= link_to manager.current_assignment.store.name, store_path(manager.current_assignment.store) unless manager.current_assignment.nil? %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @managers, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+<% end %>

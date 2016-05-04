@@ -11,8 +11,8 @@
     <% @shifts.each do |shift| %>
       <tr>
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
-        <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
-        <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
+        <td><%= (shift.start_time.localtime).strftime("%l:%M %p") %></td>
+        <td><%= (shift.end_time.localtime).strftime("%l:%M %p") %></td>
       </tr>
     <% end %>
   </tbody>

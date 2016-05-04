@@ -25,9 +25,8 @@
 	  <b>Active:</b> <%= @employee.active ? "Yes" : "No" %>
 	</p>
 	<% end %>
-	<%= render 'list_of_shifts' %>
 	<% if !current_user.employee.role? :employee %>
-	  <%= link_to(new_shift_path(assignment_id: @employee.current_assignment.id), id: 'new_shift_link', class: 'button tiny radius', remote: true) do %>
+	  <%= link_to(new_shift_path(assignment_id: @employee.current_assignment.id, employee_id: @employee), id: 'new_shift_link', class: 'button tiny radius', remote: true) do %>
 	  Add New Shift
 		<% end %>
 	<% end %>

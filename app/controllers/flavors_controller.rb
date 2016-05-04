@@ -16,6 +16,19 @@ class FlavorsController < ApplicationController
   end
 
   def edit
+    unless params[:status].nil?
+      if params[:status].match(/make_active/) then
+        @flavor.update_attribute(:active, true)
+        @flavor.save!
+        flash[:notice] = "#{@flavor.name} is now active in the system."
+      elsif params[:status].match(/make_inactive/)
+        @flavor.update_attribute(:active, false)
+        @flavor.save!
+        flash[:notice] = "#{@flavor.name} is no longer an active job in the system."
+      end
+      redirect_to home_path
+      return
+    end
   end
 
   def create

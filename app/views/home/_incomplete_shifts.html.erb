@@ -14,8 +14,8 @@
       <tr>
         <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
-        <td><%= (shift.start_time - 4.hours).strftime("%l:%M %p") %></td>
-        <td><%= (shift.end_time - 4.hours).strftime("%l:%M %p") %></td>
+        <td><%= (shift.start_time.localtime).strftime("%l:%M %p") %></td>
+        <td><%= (shift.end_time.localtime).strftime("%l:%M %p") %></td>
         <td><%= link_to "Add Jobs", edit_shift_path(shift, type: "add_job") %></td>
       </tr>
     <% end %>

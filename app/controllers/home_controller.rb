@@ -9,6 +9,9 @@ class HomeController < ApplicationController
       elsif current_user.employee.role? :manager then
         @incomplete_shifts = Shift.incomplete.past.for_store(current_user.employee.current_assignment.store).chronological.paginate(page: params[:incomplete_shifts]).per_page(10)
         @active_flavors = Flavor.active.alphabetical.paginate(page: params[:page]).per_page(10)
+      elsif current_user.employee.role? :admin then
+        @jobs = Job.alphabetical.paginate(page: params[:page]).per_page(10)
+        @flavors = Flavor.alphabetical.paginate(page: params[:page]).per_page(10)
       end
   	end 
   end
@@ -20,6 +23,10 @@ class HomeController < ApplicationController
   end
 
   def contact
+  end
+
+  def manager_directory
+    @managers = Employee.active.managers.alphabetical.paginate(page: params[:page]).per_page(10)
   end
 
 end
