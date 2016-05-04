@@ -3,18 +3,16 @@
   <thead>
     <tr>
       <th>Date</th>
-      <th>Start Time</th>
-      <th>End Time</th>
       <th>Jobs</th>
+      <th>Notes</th>
     </tr>
   </thead>
   <tbody>
     <% @past_shifts.each do |shift| %>
       <tr>
         <td><%= shift.date.strftime("%m/%d/%y") %></td>
-        <td><%= (shift.start_time.localtime).strftime("%l:%M %p") %></td>
-        <td><%= (shift.end_time.localtime).strftime("%l:%M %p") %></td>
         <td><%= shift.jobs.sort.map{|j| j.name}.join(", ") %></td>
+        <td><%= shift.notes %></td>
       </tr>
     <% end %>
   </tbody>

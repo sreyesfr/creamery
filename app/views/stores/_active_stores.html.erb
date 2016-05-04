@@ -1,7 +1,11 @@
 <% if @active_stores.empty? %>
   <p><em>There are no active stores at this time.</em></p>
 <% else %>
-  <h4><b>Current Stores</b></h4>
+  <% if current_user.nil? %>
+    <h4><b>Our Stores</b></h4>
+  <% else %>
+    <h4><b>Current Stores</b></h4>
+  <% end %>
   <table class="table table-striped">
     <thead>
       <tr>

@@ -1,13 +1,16 @@
 <%= simple_nested_form_for @shift, :html => { :class => 'form-horizontal' } do |shift_form| %>
   <div class="row">
+    <fieldset>
+      <legend><%= controller.action_name.capitalize %> Shift</legend>
     <% if params[:type] == "create_edit" %>
       <div class="span7" >
-        <fieldset>
-          <legend><%= controller.action_name.capitalize %> Shift</legend>
+        
+          
           <%= render :partial => "shift_fields", :locals => {:f => shift_form} %>
-        </fieldset>
+        
       </div>
     <% end %>
+    <%= shift_form.input :notes, input_html: {class: "avg"} %>
     <div class="span5">
       <div id="shift_jobs">
         <%= shift_form.simple_fields_for :shift_jobs do |shift_job_form| %>
@@ -19,6 +22,7 @@
       </div>
     </div>
   </div>
+  </fieldset>
   <div class="form-actions">
       <%= shift_form.submit nil, :class => 'button' %>
       <%= link_to 'Cancel', home_path, :class => 'button secondary' %>

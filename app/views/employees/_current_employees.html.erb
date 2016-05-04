@@ -2,27 +2,32 @@
   <p><em>You have no current employees at this time.</em></p>
 <% else %>
   <% if current_user.employee.role? :manager %>
-    <h4><b>Employees at <%= current_user.employee.current_assignment.store.name %></b></h4>
-    <table class="table table-striped">
-      <thead>
-        <tr>
-          <th>Name</th>
-          <th>Phone</th>
-          <th>&nbsp;</th>
-        </tr>
-      </thead>
-      <tbody>
-        <% @employees.each do |employee| %>   
+    <div class="small-6 columns">
+      <h4><b>Employees at <%= current_user.employee.current_assignment.store.name %></b></h4>
+      <table class="table table-striped">
+        <thead>
           <tr>
-            <td><%= link_to employee.name, employee_path(employee) %></td>
-            <td><%= number_to_phone employee.phone unless employee.phone.nil?  %></td>
-            <td><%= link_to "Assign Shift", new_shift_path(assignment_id: employee.current_assignment.id) %></td>
+            <th>Name</th>
+            <th>Phone</th>
+            <th>&nbsp;</th>
           </tr>
-        <% end %>
-      </tbody>
-    </table>
-    <%= will_paginate @employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
-    <br \>
+        </thead>
+        <tbody>
+          <% @employees.each do |employee| %>   
+            <tr>
+              <td><%= link_to employee.name, employee_path(employee) %></td>
+              <td><%= number_to_phone employee.phone unless employee.phone.nil?  %></td>
+              <td><%= link_to "Assign Shift", new_shift_path(assignment_id: employee.current_assignment.id) %></td>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+      <%= will_paginate @employees, param_name: "employees", :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+      <br \>
+    </div>
+    <div class="small-6 columns">
+      <%= render partial: "completed_shifts" %>
+    </div>
   <% else %>
     <h4><b>Current Employees</b></h4>
     <table class="table table-striped">
@@ -56,7 +61,7 @@
         <% end %>
       </tbody>
     </table>
-    <%= will_paginate @employees, :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
+    <%= will_paginate @employees, param_name: "employees", :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>
     <br \>
   <% end %>
 <% end %>

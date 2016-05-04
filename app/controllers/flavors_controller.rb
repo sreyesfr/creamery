@@ -24,7 +24,7 @@ class FlavorsController < ApplicationController
       elsif params[:status].match(/make_inactive/)
         @flavor.update_attribute(:active, false)
         @flavor.save!
-        flash[:notice] = "#{@flavor.name} is no longer an active job in the system."
+        flash[:notice] = "#{@flavor.name} is no longer an active flavor in the system."
       end
       redirect_to home_path
       return

@@ -5,14 +5,15 @@ class EmployeesController < ApplicationController
   authorize_resource
 
   def index
-    @active_employees = Employee.active.alphabetical.paginate(page: params[:page]).per_page(10)
+    @active_employees = Employee.active.alphabetical.paginate(page: params[:employees]).per_page(10)
     @inactive_employees = Employee.inactive.alphabetical.paginate(page: params[:page]).per_page(10)
-    @visible_employees = Assignment.current.by_employee.accessible_by(current_ability).map{|a| a.employee}.paginate(page: params[:page], per_page: 10)
+    @visible_employees = Assignment.current.by_employee.accessible_by(current_ability).map{|a| a.employee}.paginate(page: params[:employees], per_page: 10)
     if current_user.employee.role? :admin then
       @employees = @active_employees
     else
       @employees = @visible_employees
     end
+    @completed_shifts = Shift.completed.by_employee.chronological.paginate(page: params[:completed_shifts]).per_page(10)
   end
 
   def show
@@ -29,6 +30,9 @@ class EmployeesController < ApplicationController
   end
 
   def edit
+    if @employee.user.nil? then 
+      @employee.build_user 
+    end
   end
 
   def create

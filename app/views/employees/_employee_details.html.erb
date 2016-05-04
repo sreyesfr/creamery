@@ -5,7 +5,7 @@
 	</p>
 
 	<p>
-	  <b>SSN:</b> <%= @employee.ssn %>
+	  <b>SSN:</b> <%= @employee.ssn.insert(-7,"-").insert(-5,"-") %>
 	</p>
 
 	<p>

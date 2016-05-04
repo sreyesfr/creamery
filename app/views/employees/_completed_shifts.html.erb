@@ -1,0 +1,20 @@
+<h4><b>Completed Shifts</b></h4>
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Date</th>
+      <th>&nbsp;</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @completed_shifts.each do |shift| %>
+      <tr>
+        <td><%= link_to shift.employee.name, employee_path(shift.employee) %></td>
+        <td><%= shift.date.strftime("%m/%d/%y") %></td>
+        <td><%= link_to "Edit", edit_shift_path(shift, type: "create_edit") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+<%= will_paginate @completed_shifts, param_name: "completed_shifts", :previous_label => "Previous&nbsp;", :next_label => "&nbsp;Next" %>

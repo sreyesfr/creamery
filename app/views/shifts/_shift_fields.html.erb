@@ -1,4 +1,3 @@
-<%= f.input :assignment_id, :include_blank => true, input_html: {class: "avg"}, label: "Employee" %>
-<%= f.input :date %>
-<%= f.input :start_time %>
-<%= f.input :notes %>
+<%= f.input :date, input_html: {class: "avg"} %>
+<%= f.input :start_time, :label => "Start Time", as: :string, input_html: {:id => "timepicker", :class => "avg"}%>
+<%= f.input :end_time, :label => "End Time", as: :string, input_html: {:id => "timepicker", :class => "avg"}%>
