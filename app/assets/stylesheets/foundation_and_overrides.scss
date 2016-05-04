@@ -52,11 +52,11 @@
 
 // We use these as default colors throughout
  $primary-color: #5e0231;
- $secondary-color: #5e0231;
- $alert-color: #5e0231;
- $success-color: #c7a693;
- $warning-color: #5e0231;
- $info-color: #5e0231;
+ $secondary-color: red;
+ $alert-color: red;
+ $success-color: green;
+ $warning-color: orange;
+ $info-color: blue;
 
 // We use these to make sure border radius matches unless we want it different.
 // $global-radius: 3px;

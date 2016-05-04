@@ -10,8 +10,8 @@ class HomeController < ApplicationController
         @incomplete_shifts = Shift.incomplete.past.for_store(current_user.employee.current_assignment.store).chronological.paginate(page: params[:incomplete_shifts]).per_page(10)
         @active_flavors = Flavor.active.alphabetical.paginate(page: params[:page]).per_page(10)
       elsif current_user.employee.role? :admin then
-        @jobs = Job.alphabetical.paginate(page: params[:page]).per_page(10)
-        @flavors = Flavor.alphabetical.paginate(page: params[:page]).per_page(10)
+        @jobs = Job.alphabetical #.paginate(page: params[:jobs]).per_page(10)
+        @flavors = Flavor.alphabetical #.paginate(page: params[:flavors]).per_page(10)
       end
   	end 
   end

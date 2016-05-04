@@ -54,7 +54,7 @@
           <% end %>
         <% end %>
 
-        <% if !current_user.nil? and (current_user.employee.role? :employee or current_user.employee.role? :manager)%>
+        <% if !current_user.nil? %>
           <li><%= link_to "My Info", employee_path(current_user.employee) %><li>
         <% end %>
 

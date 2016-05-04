@@ -16,7 +16,7 @@
         <tr>
           <td><%= link_to manager.name, employee_path(manager) %></td>
           <td><%= number_to_phone manager.phone unless manager.phone.nil?  %></td>
-          <td><%= manager.user.email unless manager.user.nil? %></td>
+          <td><%= mail_to(manager.user.email) unless manager.user.nil? %></td>
           <td><%= link_to manager.current_assignment.store.name, store_path(manager.current_assignment.store) unless manager.current_assignment.nil? %></td>
         </tr>
       <% end %>

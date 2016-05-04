@@ -33,11 +33,16 @@ class JobsController < ApplicationController
 
   def create
     @job = Job.new(job_params)
-    
-    if @job.save
-      redirect_to home_path, notice: "Successfully created #{@job.name}."
-    else
-      render action: 'new'
+
+    respond_to do |format|
+      if @job.save
+        format.html { redirect_to home_path, notice: 'Job was successfully created.' }
+        @jobs = Job.alphabetical #.paginate(page:params[:jobs]).per_page(10)
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.js
+      end
     end
   end
 

@@ -33,11 +33,16 @@ class FlavorsController < ApplicationController
 
   def create
     @flavor = Flavor.new(flavor_params)
-    
-    if @flavor.save
-      redirect_to flavor_path(@flavor), notice: "Successfully created #{@flavor.name}."
-    else
-      render action: 'new'
+
+    respond_to do |format|
+      if @flavor.save
+        format.html { redirect_to home_path, notice: 'Flavor was successfully created.' }
+        @flavors = Flavor.alphabetical #.paginate(page:params[:flavors]).per_page(10)
+        format.js
+      else
+        format.html { render action: 'new' }
+        format.js
+      end
     end
   end
 

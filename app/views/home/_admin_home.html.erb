@@ -1,9 +1,14 @@
-<br \>
 <div class="row">
 	<div class="small-7 columns">
 		<%= render :partial => "job_list" %>
+  	<%= link_to(new_job_path, id: 'new_job_link', class: 'button tiny radius', remote: true) do %>
+    	Add New Job
+    <% end %>
 	</div>
 	<div class="small-5 columns">
 		<%= render :partial => "flavor_list" %>
+  	<%= link_to(new_flavor_path, id: 'new_flavor_link', class: 'button tiny radius', remote: true) do %>
+    	Add New Flavor
+    <% end %>
 	</div>
 </div>
