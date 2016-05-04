@@ -14,8 +14,10 @@
 
   
     <script>
+      // Datepicker code
       $(function() {
-        $( "#datepicker" ).datepicker({
+        $( "#datepicker, #datepicker2" ).datepicker({
+          dateFormat: "MM d, yy",
           changeMonth: true,
           changeYear: true,
           yearRange: '-100:+0'
@@ -26,6 +28,11 @@
          $('.alert-box').fadeIn('normal', function() {
             $(this).delay(2000).fadeOut();
          });
+      });
+      // Timepicker code
+      $(function() {
+        $( "#timepicker" ).timepicker({
+        });
       });
     </script>
   </head>

@@ -1,1 +1,14 @@
-<%= render :partial => "new_shift_form" %>
+<%= simple_form_for @shift, html: { :class => 'form-horizontal' } do |f| %>
+  <fieldset>
+		<legend>New Shift for <%= Assignment.find(params[:assignment_id]).employee.proper_name %></legend>
+	  <%# f.input :date, label: "Date", input_html: {:class => "avg"} %>
+	  <%= f.input :date, :label => "Date", as: :string, input_html: {:id => "datepicker", :class => "avg"}%>
+	  <%= f.input :start_time, label: "Start Time", input_html: {:class => "avg"} %>
+	  <%# f.input :start_time, :label => "Start Time", as: :string, input_html: {:id => "timepicker", :class => "avg"}%>
+	  <%= f.input :assignment_id, as: :hidden, input_html: { value: params[:assignment_id], class: "avg"} %>
+	</fieldset>
+	<div class="form-actions">
+	  <%= f.submit nil, class: 'button' %>
+	  <%= link_to 'Cancel', employees_path, class: 'button alert' %>
+	</div>
+<% end %>

@@ -1,7 +1,10 @@
+
 <br \>
-<h3><b>Flavors</b></h3>
-<% StoreFlavor.for_store(@store).each do |store_flavor| %>
-  <p>
-     ~ <%= store_flavor.flavor.name %>
-  </p>
+<% if !StoreFlavor.for_store(@store).empty? %>
+	<h4><b>Flavors</b></h4>
+	<% StoreFlavor.for_store(@store).each do |store_flavor| %>
+	  <p>
+	     ~ <%= store_flavor.flavor.name %>
+	  </p>
+	<% end %>
 <% end %>

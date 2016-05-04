@@ -39,6 +39,7 @@ gem 'jquery-ui-rails'
 gem 'nested_form'
 gem 'sunspot_rails'
 gem 'sunspot_solr'
+gem 'jquery-timepicker-rails'
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

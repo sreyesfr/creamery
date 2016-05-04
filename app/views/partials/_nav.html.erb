@@ -13,6 +13,10 @@
           <li><%= link_to "Manager Directory", manager_directory_path %><li>
         <% end %>
 
+        <% if !current_user.nil? and current_user.employee.role? :manager %> 
+          <li><%= link_to "My Employees", employees_path %></li>
+        <% end %>   
+
         <% if !current_user.nil? and current_user.employee.role? :admin %>
         <!-- options for stores -->
         <li class="has-dropdown">
@@ -22,13 +26,11 @@
             <li><%= link_to "Add a Store", new_store_path %></li>
           </ul>
         </li>
+        <% elsif !current_user.nil? %>
+          <li><%= link_to "Store List", stores_path %></li>
         <% else %>
           <li><%= link_to "Our Stores", stores_path %></li>
-        <% end %>
-
-        <% if !current_user.nil? and current_user.employee.role? :manager %> 
-          <li><%= link_to "Employee List", employees_path %></li>
-        <% end %>       
+        <% end %>    
 
         <% if !current_user.nil? and current_user.employee.role? :admin %>
           <!-- options for employees -->
@@ -54,16 +56,15 @@
           <% end %>
         <% end %>
 
-        <% if !current_user.nil? %>
-          <li><%= link_to "My Info", employee_path(current_user.employee) %><li>
-        <% end %>
-
         <% if current_user.nil? %>
           <li><%= link_to "Contact Us", contact_path %><li>
         <% end %>
 
       </ul>
       <ul class="right">
+        <% if !current_user.nil? %>
+          <li><%= link_to "My Profile", employee_path(current_user.employee) %><li>
+        <% end %>
         <%= render :partial => "partials/login" %>
       </ul>
     </section>

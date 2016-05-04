@@ -1,6 +1,4 @@
 <div class="fields">
-	<div class="min_shift_job">
-		<%= f.link_to_remove("x") %>
-    <%= f.input :job_id, :collection => Job.active.alphabetical, :include_blank => true, input_html: {class: "avg"} %>
-  </div>
+	<%= f.link_to_remove("x") %>
+  <%= f.input :job_id, :collection => Job.active.alphabetical, :include_blank => true, input_html: {class: "avg"} %>
 </div>

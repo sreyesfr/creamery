@@ -6,14 +6,21 @@
 			<%= render :partial => "employees/upcoming_shifts" %>
 		</div>
 		<% if @next_shift.date == Date.current %>
-			<div class="small-8 columns">
-				<br \><br \><br \>
-				<%= link_to(edit_shift_path(@next_shift, status: 'start_now'), class: "button") do %>
-		            &nbsp;Clock In&nbsp;
-		     <% end %>
-		     <%= link_to(edit_shift_path(@next_shift, status: 'end_now'), class: "button") do %>
-		            &nbsp;Clock Out
-		     <% end %>
+			<div class="small-2 columns">
+				<p></p>
+			</div>
+			<div class="small-6 columns">
+				<br \><br \>
+				<fieldset>
+					<legend align="center">You have a shift today!</legend>
+					&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+					<%= link_to(edit_shift_path(@next_shift, status: 'start_now'), class: "button") do %>
+			            &nbsp;Clock In&nbsp;
+			    <% end %>
+			    <%= link_to(edit_shift_path(@next_shift, status: 'end_now'), class: "button") do %>
+			            &nbsp;Clock Out
+			    <% end %>
+			  </fieldset>
 			</div>
 		<% end %>
 	<% end %>
