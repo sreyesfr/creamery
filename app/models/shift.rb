@@ -11,7 +11,7 @@ class Shift < ActiveRecord::Base
   # Validations
   validates_date :date, on_or_after: lambda { :assignment_starts }, on_or_before_message: "must be on or after the start of the assignment"
   validates_time :start_time
-  #validates_time :end_time, after: :start_time, allow_blank: true
+  validates_time :end_time, allow_blank: true #after: :start_time
   validate :assignment_must_be_current
 
   # Scopes
